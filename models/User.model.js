@@ -4,8 +4,11 @@ const userSchema = mongoose.Schema({
   login: String,
   password: String,
   name: String,
-  weigth: Number,
-  img: String,
+  weight: Number,
+  img: {
+    type: String,
+    default: Number,
+  },
   role: {
     type: String,
     default: "user",
