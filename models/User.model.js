@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
   weight: Number,
   img: {
     type: String,
-    default: Number,
+    default: null,
   },
   role: {
     type: String,
