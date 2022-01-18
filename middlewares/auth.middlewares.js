@@ -12,8 +12,8 @@ module.exports = async(req, res, next) => {
   if (type !== "Bearer") {
     return res.status(401).json("Неверный тип токена!");
   }
-
   try {
+    
      req.carservice = await jwt.verify(token, process.env.SECRET_JWT_KEY);
 
     next();
