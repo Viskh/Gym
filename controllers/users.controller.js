@@ -14,14 +14,21 @@ module.exports.usersController = {
 
   registerUser: async (req, res) => {
     try {
-      const { login, password } = req.body;
+      const { login, password, name, weight, img, role } = req.body;
 
       const hash = await bcrypt.hash(
         password,
         Number(process.env.BCRYPT_ROUNDS)
       );
 
-      const user = await User.create({ login: login, password: hash });
+      const user = await User.create({
+        login: login,
+        password: hash,
+        name: name,
+        weight: weight,
+        img: img,
+        role: role,
+      });
 
       res.json(user);
     } catch (error) {
