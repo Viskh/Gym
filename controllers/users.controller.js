@@ -14,7 +14,7 @@ module.exports.usersController = {
 
   registerUser: async (req, res) => {
     try {
-      const { login, password, name, weight, img, role } = req.body;
+      const { email, password, name, weight, img, role } = req.body;
 
       const hash = await bcrypt.hash(
         password,
@@ -22,7 +22,7 @@ module.exports.usersController = {
       );
 
       const user = await User.create({
-        login: login,
+        email: email,
         password: hash,
         name: name,
         weight: weight,
@@ -38,9 +38,9 @@ module.exports.usersController = {
 
   login: async (req, res) => {
     try {
-      const { login, password } = req.body;
+      const { email, password } = req.body;
 
-      const condidate = await User.findOne({ login });
+      const condidate = await User.findOne({ email });
 
       if (!condidate) {
         return res.status(401).json("неверный логин или пароль");
@@ -53,7 +53,7 @@ module.exports.usersController = {
 
       const payload = {
         id: condidate._id,
-        login: condidate.login,
+        email: condidate.email,
       };
 
       const token = await jwt.sign(payload, process.env.SECRET_JWT_KEY, {
