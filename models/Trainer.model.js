@@ -9,7 +9,7 @@ const trainerSchema = mongoose.Schema({
     },
     rating: Number,
     coefficient: Number,
-}),
+})
 
 const Trainer = mongoose.model('Trainer', trainerSchema);
 
