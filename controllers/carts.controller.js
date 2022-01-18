@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 module.exports.cartsController = {
   getCartById: async (req, res) => {
     try {
-      const { id } = req.params;
       const cart = await Cart.findOne({ user: req.user.id });
       res.json(cart);
     } catch (e) {
