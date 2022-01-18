@@ -24,7 +24,7 @@ module.exports.subscriptionsController = {
 
       const subscriptions = await Subscription.find()
 
-      res.json(subscription)
+      res.json(subscriptions)
       
     } catch (e) {
       res.json(e);
