@@ -4,12 +4,14 @@ module.exports.subscriptionsController = {
 
   creareSubscription: async (req, res) => {
     try {
-      const { name, price, time } = req.body;
+      const { name, img, price, time, text } = req.body;
 
       const subscription = await Subscription.create({
         name: name,
+        img: img,
         price: price,
         time: time,
+        text: text,
       });
 
       res.json(subscription)
