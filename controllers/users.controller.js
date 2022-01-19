@@ -11,7 +11,15 @@ module.exports.usersController = {
       res.json(error);
     }
   },
-
+  getUserById: async (req,res) => {
+    try {
+      const {id} = req.params
+      const user = await User.findById(id)
+      res.json(user)
+    }catch (e) {
+      res.json(e)
+    }
+  },
   registerUser: async (req, res) => {
     try {
       const { email, password, name, weight, img, role } = req.body;
