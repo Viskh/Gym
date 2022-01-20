@@ -33,4 +33,16 @@ module.exports.subscriptionsController = {
     }
   },
 
+  deleteSubscription: async (req, res) => {
+    try {
+
+      const subscription = await Subscription.findByIdAndRemove(req.params.id)
+
+      res.json(subscription)
+      
+    } catch (error) {
+      res.json(e);
+    }
+  }
+
 };

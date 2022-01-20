@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema(
       required: true,
     },
     weight: {
-      type: String,
+      type: Number,
     },
     img: {
       type: String,
@@ -28,7 +28,6 @@ const userSchema = mongoose.Schema(
     },
     phone: {
       type: Number,
-      required: true
     }
   },
   { timestamps: true }

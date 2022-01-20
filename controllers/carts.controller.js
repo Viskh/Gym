@@ -2,6 +2,7 @@ const Cart = require("../models/Cart.model");
 const jwt = require("jsonwebtoken");
 
 module.exports.cartsController = {
+  
   getCartById: async (req, res) => {
     try {
       const cart = await Cart.findOne({ user: req.user.id });
@@ -10,6 +11,7 @@ module.exports.cartsController = {
       res.json(e);
     }
   },
+
   deleteCart: async (req,res)=> {
     const {id} = req.params
     try {
@@ -28,29 +30,38 @@ module.exports.cartsController = {
       res.status(401).json(`Ошибка: ${e.toString()}`)
     }
   },
+
   addCart: async (req, res) => {
     try {
-      await Cart.create({
+      const cart = await Cart.create({
         user: req.body.user,
         subscription: req.body.subscription,
         trainer: req.body.trainer,
       });
-      res.json("корзина создана");
+      res.json(cart);
     } catch (e) {
       res.json(e);
     }
   },
+
   updateCart: async (req, res) => {
     try {
       await Cart.findByIdAndUpdate(req.params.id, {
         subscription: req.body.subscription,
         trainer: req.body.trainer,
+        $push: {
+          products: req.body.products
+        }
       });
-      res.json("Корзина изменена");
+
+      const cart = await Cart.findById(req.params.id)
+
+      res.json(cart);
     } catch (e) {
       res.json(e);
     }
   },
+
   cartToken: async (req, res) => {
     try {
       const { subscription, trainer } = req.body;
