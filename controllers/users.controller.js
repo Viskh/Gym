@@ -61,16 +61,13 @@ module.exports.usersController = {
 
       const payload = {
         id: condidate._id,
-        email: condidate.email,
       };
 
       const token = await jwt.sign(payload, process.env.SECRET_JWT_KEY, {
         expiresIn: "21d",
       });
 
-      res.json({
-        token,
-      });
+      res.json(token);
     } catch (error) {
       res.json(error);
     }
