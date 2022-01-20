@@ -67,9 +67,12 @@ module.exports.usersController = {
         expiresIn: "21d",
       });
 
-      res.json(token);
+      res.json({
+        token: token,
+        id: condidate._id
+      });
     } catch (error) {
-      res.json(error);
+      res.json(error.status(401).json(error.toString()));
     }
   },
 };
