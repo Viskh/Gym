@@ -75,4 +75,17 @@ module.exports.usersController = {
       res.json(error.status(401).json(error.toString()));
     }
   },
+
+  updateImg: async (req, res) => {
+    try {
+      await User.findByIdAndUpdate(req.params.id, {
+        img: req.file.path,
+      });
+      const user = await User.findById(req.params.id);
+
+      res.status(200).json(user);
+    } catch (error) {
+      res.json(error);
+    }
+  },
 };

@@ -14,6 +14,10 @@ const cartSchema = mongoose.Schema(
       ref: "Trainer",
       type: mongoose.SchemaTypes.ObjectId,
     },
+    products: [{
+      ref: "Products",
+      type: mongoose.SchemaTypes.ObjectId,
+    }]
   },
   { timestamps: true }
 );
