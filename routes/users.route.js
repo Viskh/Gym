@@ -9,6 +9,6 @@ router.get("/users", usersController.getAllUsers);
 router.get("/profile/user/:id", authMiddlewares, usersController.getUserById);
 router.post("/users/login", usersController.login);
 router.post("/users/register", usersController.registerUser);
-router.patch('/users/:id', authMiddlewares, addFileMiddleware('img'), carservicesController.updateImg);
+router.patch('/users/:id', authMiddlewares, addFileMiddleware.single('img'), carservicesController.updateImg);
 
 module.exports = router;
