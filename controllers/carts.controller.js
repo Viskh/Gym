@@ -42,8 +42,6 @@ module.exports.cartsController = {
     try {
       const cart = await Cart.create({
         user: req.body.user,
-        subscription: req.body.subscription,
-        trainer: req.body.trainer,
       });
       res.json(cart);
     } catch (e) {
