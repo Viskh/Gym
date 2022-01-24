@@ -2,32 +2,39 @@ const Cart = require("../models/Cart.model");
 const jwt = require("jsonwebtoken");
 
 module.exports.cartsController = {
-  
+  getAllCarts: async (req, res) => {
+    try {
+      const carts = await Cart.find();
+      res.json(carts);
+    } catch (error) {
+      res.json(error);
+    }
+  },
+
   getCartById: async (req, res) => {
     try {
-      const cart = await Cart.findOne({ user: req.user.id });
+      const cart = await Cart.findOne({ user: req.params.id });
       res.json(cart);
     } catch (e) {
       res.json(e);
     }
   },
 
-  deleteCart: async (req,res)=> {
-    const {id} = req.params
+  deleteCart: async (req, res) => {
+    const { id } = req.params;
     try {
-      const cart = await Cart.findById(id)
+      const cart = await Cart.findById(id);
 
-      if(req.user.id !== cart.user.toString()) {
-        return res.status(401).json('Ошибка. Нет доступа')
+      if (req.user.id !== cart.user.toString()) {
+        return res.status(401).json("Ошибка. Нет доступа");
       }
       if (cart.user.toString() === req.user.id) {
-        await cart.remove()
-        return res.json('Удалено')
+        await cart.remove();
+        return res.json("Удалено");
       }
-      return res.status(401).json('Ошибка. Нет доступа')
-    }
-    catch (e) {
-      res.status(401).json(`Ошибка: ${e.toString()}`)
+      return res.status(401).json("Ошибка. Нет доступа");
+    } catch (e) {
+      res.status(401).json(`Ошибка: ${e.toString()}`);
     }
   },
 
@@ -44,17 +51,52 @@ module.exports.cartsController = {
     }
   },
 
-  updateCart: async (req, res) => {
+  addCartItem: async (req, res) => {
     try {
       await Cart.findByIdAndUpdate(req.params.id, {
         subscription: req.body.subscription,
         trainer: req.body.trainer,
         $push: {
-          products: req.body.products
-        }
+          productsCart: {
+            product: req.body.product,
+            amount: req.body.amount,
+          },
+        },
       });
 
-      const cart = await Cart.findById(req.params.id)
+      const cart = await Cart.findById(req.params.id);
+
+      res.json(cart);
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
+  deleteCartItem: async (req, res) => {
+    try {
+      await Cart.findByIdAndUpdate(req.params.id, {
+        $pull: {
+          productsCart: {
+            product: req.body.product,
+          },
+        },
+      });
+
+      const cart = await Cart.findById(req.params.id);
+
+      res.json(cart);
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
+  increaseProductAmoutn: async (req, res) => {
+    try {
+      await Cart.findByIdAndUpdate(req.params.id, {
+        $inc: { productsCart: { amount: +1 } },
+      });
+
+      const cart = await Cart.findById(req.params.id);
 
       res.json(cart);
     } catch (e) {

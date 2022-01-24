@@ -4,9 +4,12 @@ const authMiddlewares = require('../middlewares/auth.middlewares');
 
 const router = Router()
 
-router.get('/carts', authMiddlewares, cartsController.getCartById);
-router.post('/carts', authMiddlewares, cartsController.cartToken);
-router.patch('/carts/:id', authMiddlewares, cartsController.updateCart)
-router.delete('/carts/:id', authMiddlewares, cartsController.deleteCart)
+router.get('/carts', cartsController.getAllCarts);
+router.get('/carts/:id', cartsController.getCartById);
+router.post('/carts', cartsController.addCart);
+router.patch('/carts/add/:id', cartsController.addCartItem)
+router.patch('/carts/delete/:id', cartsController.deleteCartItem)
+router.patch('/carts/product/increment/:id', cartsController.increaseProductAmoutn)
+router.delete('/carts/:id', cartsController.deleteCart)
 
 module.exports = router;
