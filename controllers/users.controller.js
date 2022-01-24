@@ -88,4 +88,15 @@ module.exports.usersController = {
       res.json(error);
     }
   },
+  updateUserInfo: async (req, res) => {
+    try {
+      await User.findByIdAndUpdate(req.user.id, {
+        $set: {...req.body},
+      });
+      const user = await User.findByid(req.user.id);
+      res.status(200).json(user)
+    }catch (e) {
+      res.json(e)
+    }
+  }
 };
