@@ -9,15 +9,25 @@ const cartSchema = mongoose.Schema(
     subscription: {
       ref: "Subscription",
       type: mongoose.SchemaTypes.ObjectId,
+      default: null,
     },
     trainer: {
       ref: "Trainer",
       type: mongoose.SchemaTypes.ObjectId,
+      default: null,
     },
-    products: [{
-      ref: "Products",
-      type: mongoose.SchemaTypes.ObjectId,
-    }]
+    productsCart: [
+      {
+        product: {
+          ref: "Products",
+          type: mongoose.SchemaTypes.ObjectId,
+          
+        },
+        amount: {
+          type: Number,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );
