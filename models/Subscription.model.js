@@ -9,6 +9,7 @@ const subscriptionSchema = mongoose.Schema(
     img: {
       type: String,
       required: true,
+      default: null,
     },
     price: {
       type: Number,
