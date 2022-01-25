@@ -1,5 +1,5 @@
-const {Router} = require('express')
-const {trainersController} = require('../controllers/trainers.controller')
+const { Router } = require('express')
+const { trainersController } = require('../controllers/trainers.controller')
 const authMiddlewares = require('../middlewares/auth.middlewares')
 const addFileMiddleware = require("../middlewares/addFile.middleware");
 const router = Router()

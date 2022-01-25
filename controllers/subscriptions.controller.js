@@ -40,9 +40,23 @@ module.exports.subscriptionsController = {
 
       res.json(subscription)
       
-    } catch (error) {
+    } catch (e) {
       res.json(e);
     }
-  }
+  },
+
+  updateImage: async (req, res) => {
+    try {
+
+      await Subscription.findByIdAndUpdate(req.params.id, {
+        img: req.file.path,
+      });
+      const subscription = await Subscription.findById(req.params.id)
+
+      res.status(200).json(subscription)
+    } catch(error) {
+      res.json(error)
+    }
+  },
 
 };
