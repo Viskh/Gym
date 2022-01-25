@@ -48,4 +48,17 @@ module.exports.trainersController = {
       res.json(error);
     }
   },
+
+  updateImg: async (req, res) => {
+    try {
+      await Trainer.findByIdAndUpdate(req.params.id, {
+        img: req.file.path,
+      });
+      const trainer = await Trainer.findById(req.params.id);
+
+      res.status(200).json(trainer);
+    } catch (error) {
+      res.json(error);
+    }
+  },
 };
