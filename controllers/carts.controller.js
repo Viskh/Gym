@@ -88,14 +88,27 @@ module.exports.cartsController = {
     }
   },
 
-  increaseProductAmoutn: async (req, res) => {
+  increaseProductAmount: async (req, res) => {
     try {
-      await Cart.findByIdAndUpdate(req.params.id, {
-        productsCart: {
-          product: req.body.product,
-          $inc: { amount: req.body},
-        },
-      });
+      await Cart.updateOne(
+        { _id: req.params.id, "productsCart.product": req.body.product },
+        { $inc: { "productsCart.$.amount": 1 } }
+      );
+
+      const cart = await Cart.findById(req.params.id);
+
+      res.json(cart);
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
+  decreaseProductAmount: async (req, res) => {
+    try {
+      await Cart.updateOne(
+        { _id: req.params.id, "productsCart.product": req.body.product },
+        { $inc: { "productsCart.$.amount": -1 } }
+      );
 
       const cart = await Cart.findById(req.params.id);
 
