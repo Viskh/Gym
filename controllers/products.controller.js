@@ -56,4 +56,19 @@ module.exports.productsController = {
       res.json(error);
     }
   },
+
+  updateImage: async (req, res) => {
+    try {
+
+      await Product.findByIdAndUpdate(req.params.id, {
+        img: req.file.path,
+      });
+      
+      const product = await Product.findById(req.params.id)
+
+      res.status(200).json(product)
+    } catch(error) {
+      res.json(error)
+    }
+  },
 };
