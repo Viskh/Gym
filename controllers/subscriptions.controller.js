@@ -10,12 +10,12 @@ module.exports.subscriptionsController = {
         name: name,
         img: img,
         price: price,
-        time: time,
+        time: time * 3600 * 24,
         text: text,
+        deadTime: (new Date().getTime() / 1000) + (time *3600 * 24)
       });
 
-      res.json(subscription)
-
+      res.json( subscription)
     } catch (e) {
       res.json(e);
     }
