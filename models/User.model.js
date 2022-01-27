@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema(
     },
     weight: {
       type: Number,
+      required: true
     },
     img: {
       type: String,
@@ -30,27 +31,12 @@ const userSchema = mongoose.Schema(
       type: Number,
     },
     age: {
-      type: String,
-      default: "xx"
-    },
-    aboutMe: {
-      type: String,
-      default: "Быть идеальным тоже непросто. Если ты сильный, ты очень " +
-        "скоро остаёшься один и становишься заносчивым, даже если " +
-        "изначально ты давал людям все, чего от тебя ожидали"
+      type: Number,
     },
     purposeTrain: {
       type: String,
-      default: "Держать себя в форме, #антижир"
+      default: "Держать себя в форме!"
     },
-    favoriteQuote: {
-      type: String,
-      default: "Ave Caesar, imperator, morituri te salutant"
-    },
-    slogan: {
-      type: String,
-      default: "Цель быть лучше себя вчерашнего!"
-    }
   },
   { timestamps: true }
 );

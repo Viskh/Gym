@@ -22,10 +22,6 @@ const subscriptionSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    deadTime: {
-      type: Number,
-      required: true
-    }
   },
   { timestamps: {
     currentTime: () => Math.floor(Date.now() / 1000)

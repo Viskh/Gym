@@ -1,4 +1,6 @@
 const Cart = require("../models/Cart.model");
+const Subscription = require("../models/Subscription.model");
+
 const jwt = require("jsonwebtoken");
 
 module.exports.cartsController = {
@@ -52,7 +54,6 @@ module.exports.cartsController = {
   addCartItem: async (req, res) => {
     try {
       await Cart.findByIdAndUpdate(req.params.id, {
-        subscription: req.body.subscription,
         trainer: req.body.trainer,
         $push: {
           productsCart: {
@@ -61,15 +62,30 @@ module.exports.cartsController = {
           },
         },
       });
-
       const cart = await Cart.findById(req.params.id);
-
       res.json(cart);
+      console.log(cart)
     } catch (e) {
       res.json(e);
     }
   },
-
+  addCartSubscription: async (req ,res) => {
+    const startTime = new Date().getTime() / 1000;
+    const subsc = await Subscription.findById(req.body.subscription);
+    try {
+      await Cart.findByIdAndUpdate(req.params.id, {
+        subscription: req.body.subscription,
+        subscriptionDeadTime: subsc.time + startTime,
+      });
+      const cart = await Cart.findById(req.params.id);
+      res.json(cart);
+      console.log(startTime)
+      console.log(subsc)
+      console.log(cart)
+    }catch (e) {
+      res.json(e)
+    }
+  },
   deleteCartItem: async (req, res) => {
     try {
       await Cart.findByIdAndUpdate(req.params.id, {
