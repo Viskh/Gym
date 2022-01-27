@@ -21,9 +21,15 @@ const subscriptionSchema = mongoose.Schema(
     text: {
       type: String,
       required: true,
+    },
+    deadTime: {
+      type: Number,
+      required: true
     }
   },
-  { timestamps: true }
+  { timestamps: {
+    currentTime: () => Math.floor(Date.now() / 1000)
+    }}
 );
 
 const Subscription = mongoose.model("Subscription", subscriptionSchema);
