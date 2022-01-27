@@ -16,6 +16,14 @@ const cartSchema = mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       default: null,
     },
+    subscriptionStartTime: {
+      type: Number,
+      default: 0,
+    },
+    subscriptionDeadTime: {
+      type: Number,
+      default: 0,
+    },
     productsCart: [
       {
         product: {
