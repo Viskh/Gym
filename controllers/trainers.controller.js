@@ -3,7 +3,7 @@ const Trainer = require("../models/Trainer.model");
 module.exports.trainersController = {
   createTrainer: async (req, res) => {
     try {
-      const { name, description, img, rating, coefficient } = req.body;
+      const { name, description, img, rating, coefficient, vocation } = req.body;
 
       const trainer = await Trainer.create({
         name: name,
@@ -11,6 +11,7 @@ module.exports.trainersController = {
         img: img,
         rating: rating,
         coefficient: coefficient,
+        vocation: vocation,
       });
       res.json(trainer);
     } catch (error) {

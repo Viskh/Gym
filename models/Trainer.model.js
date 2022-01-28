@@ -10,6 +10,7 @@ const trainerSchema = mongoose.Schema(
     },
     rating: Number,
     coefficient: Number,
+    vocation: String,
   },
   { timestamps: true }
 );
