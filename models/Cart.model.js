@@ -34,6 +34,9 @@ const cartSchema = mongoose.Schema(
         amount: {
           type: Number
         },
+        price: {
+          type: Number
+        }
       },
     ],
   },
