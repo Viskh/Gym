@@ -9,9 +9,9 @@ router.get('/carts/:id', cartsController.getCartById);
 router.post('/carts', cartsController.addCart);
 router.patch('/carts/add/:id', cartsController.addCartItem)
 router.patch('/carts/add/subscription/in/:id', cartsController.addCartSubscription)
-router.patch('/carts/delete/:id', cartsController.deleteCartItem)
+router.patch('/carts/delete/item/:id', cartsController.deleteCartItem)
 router.patch('/carts/product/increment/:id', cartsController.increaseProductAmount)
 router.patch('/carts/product/decrement/:id', cartsController.decreaseProductAmount)
-router.delete('/carts/:id', cartsController.deleteCart)
+router.patch('/carts/delete/:id', cartsController.deleteCart)
 
 module.exports = router;
