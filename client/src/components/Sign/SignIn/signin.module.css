@@ -1,0 +1,117 @@
+html {
+  height: 100%;
+}
+
+.gradient{
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(110.15deg, #4A4B50 1.86%, #0D0D0F 98.63%);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+  width: 100%;
+  height: 748px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.login__box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.login__box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login__box .user__box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: none solid #555555;
+}
+
+.button5:hover {
+  background-color: #ff4e4e;
+  color: rgb(3, 0, 0);
+}
+.button5 {
+  background-color: #fa5732; 
+  border: none;
+  color: white;
+  padding: 12px 140px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.homeButton {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+a{
+  color: wheat;
+  text-decoration: none;
+}
+
+
+.a {
+  background-color: white;
+  color: black;
+  border: none solid #555555;
+}
+
+.a:hover {
+  background-color: #ff4e4e;
+  color: rgb(3, 0, 0);
+}
+.a {
+  background-color: #fa5732; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+ 
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-left: 2px;
+}

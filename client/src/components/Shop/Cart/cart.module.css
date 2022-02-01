@@ -1,0 +1,93 @@
+.cart__button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart__button img {
+  width: 100%;
+  color: #fff;
+}
+
+.cart__button span {
+  position: absolute;
+  background-color: red;
+  top: -5px;
+  right: -5px;
+  color: white;
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.cart__window {
+  width: 500px;
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  background-color: #4A4B50;
+  color: #fff;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.473);
+  border-radius: 30px 0 30px 30px ;
+  padding: 20px 20px 0;
+  z-index: 50;
+}
+
+.cart__window__btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: inherit;
+  border: 1px solid white;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart__window__btn:hover {
+  opacity: unset;
+}
+
+.cart__items {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart__items thead {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.cart__items tbody {
+  width: 100%;
+}
+
+ .cart__items th {
+  padding: 8px;
+}
+
+.cart__items tr {
+  width: 100%;
+  
+  font-size: 20px;
+}
+
+.cart__items td {
+  padding: 20px 0;
+}
+
+.cart__delete__btn {
+  font-size: 20px;
+  padding: 20 15px;
+  border: none;
+  cursor: pointer;
+  background-color: #f76949;
+  color: #fff;
+  border-radius: 10px;
+}
