@@ -51,7 +51,7 @@ const Subscriptions = () => {
                       {subscription.name}
                     </h2>
                     <img
-                      src={`http://localhost:5000/${subscription.img}`}
+                      src={`/${subscription.img}`}
                       alt=""
                     />
                     <figcaption>

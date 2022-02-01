@@ -71,7 +71,7 @@ export const loadTrainers = () => {
     dispatch({ type: 'trainers/load/pending' });
 
     try {
-      const res = await fetch('http://localhost:5000/users/trainers')
+      const res = await fetch('/users/trainers')
       const json = await res.json()
 
 
@@ -87,7 +87,7 @@ export const deleteTrainer = (id) => {
     dispatch({ type: 'trainers/delete/pending' })
 
     try {
-      await fetch(`http://localhost:5000/admin/trainers/${id}`, {
+      await fetch(`/admin/trainers/${id}`, {
         method: "DELETE"
       })
 
@@ -114,13 +114,13 @@ export const addTrainer = (name, raiting, photo, info) => {
         headers: { "Content-type": "application/json" },
       };
 
-      const resTrainer = await fetch("http://localhost:5000/admin/trainers", options)
+      const resTrainer = await fetch("/admin/trainers", options)
       const trainer = await resTrainer.json()
 
       
       const formData = new FormData();
       formData.append("img", photo);
-      const resImage = await fetch(`http://localhost:5000/admin/trainers/image/${trainer._id}`, {
+      const resImage = await fetch(`/admin/trainers/image/${trainer._id}`, {
         method: "PATCH",
         body: formData,
       });

@@ -5,11 +5,12 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use("/static", express.static(path.resolve(__dirname, "client", "static")));
+app.use("/static", express.static(path.resolve(__dirname, "static")));
+app.use(express.static(path.resolve(__dirname, "client", "build")));
 app.use(require("./routes"));
 
 app.get("*", (req, res) => {
@@ -20,7 +21,6 @@ const connected = async () => {
   try {
     await mongoose.connect(process.env.MONGO_SERVER);
     console.log("Вы успешно подключились к MongoDB!");
-
     app.listen(port, () => {
       console.log("Server has been started!");
     });

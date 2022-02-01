@@ -32,7 +32,7 @@ export const loadUsers = () => {
     dispatch({ type: 'admin/load/pending' })
     try {
 
-      const res = await fetch(`http://localhost:5000/users`)
+      const res = await fetch(`/users`)
       const data = await res.json()
 
       dispatch({ type: 'admin/load/fulfilled', payload: data })

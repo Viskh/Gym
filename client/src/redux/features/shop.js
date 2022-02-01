@@ -73,7 +73,7 @@ export const loadProducts = () => {
   return async (dispatch) => {
     dispatch({ type: "products/load/pending" });
     try {
-      const res = await fetch(`http://localhost:5000/users/products`);
+      const res = await fetch(`/users/products`);
       const products = await res.json();
 
       dispatch({ type: "products/load/fulfilled", payload: products });
@@ -87,7 +87,7 @@ export const addProduct = (name, img, price, weight, text) => {
   return async (dispatch) => {
     dispatch({ type: "products/add/pending" });
     try {
-      const res = await fetch(`http://localhost:5000/admin/products`, {
+      const res = await fetch(`/admin/products`, {
         method: "POST",
         body: JSON.stringify({
           name: name,
@@ -102,7 +102,7 @@ export const addProduct = (name, img, price, weight, text) => {
       const formData = new FormData();
       formData.append("img", img);
       const resImage = await fetch(
-        `http://localhost:5000/admin/products/image/${products._id}`,
+        `/admin/products/image/${products._id}`,
         {
           method: "PATCH",
           body: formData,
@@ -123,7 +123,7 @@ export const deleteProduct = (id) => {
     dispatch({ type: "products/delete/pending" });
 
     try {
-      await fetch(`http://localhost:5000/admin/products/${id}`, {
+      await fetch(`/admin/products/${id}`, {
         method: "DELETE",
       });
 

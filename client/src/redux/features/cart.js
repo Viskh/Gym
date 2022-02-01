@@ -78,7 +78,7 @@ export const loadAllCarts = () => {
   return async (dispatch) => {
     dispatch({ type: "carts/load/pending" });
     try {
-      const res = await fetch(`http://localhost:5000/carts`);
+      const res = await fetch(`/carts`);
 
       const data = await res.json();
 
@@ -93,7 +93,7 @@ export const loadCartItems = (id) => {
   return async (dispatch) => {
     dispatch({ type: "cartItems/load/pending" });
     try {
-      const res = await fetch(`http://localhost:5000/carts/${id}`);
+      const res = await fetch(`/carts/${id}`);
 
       const data = await res.json();
 
@@ -108,7 +108,7 @@ export const removeCartItem = (product, id) => {
   return async (dispatch) => {
     dispatch({ type: "product/delete/pending" });
     try {
-      const res = await fetch(`http://localhost:5000/carts/delete/item/${id}`, {
+      const res = await fetch(`/carts/delete/item/${id}`, {
         method: "PATCH",
         body: JSON.stringify({ product: product }),
         headers: {
@@ -129,7 +129,7 @@ export const addCartItem = (product, price, id) => {
   return async (dispatch) => {
     dispatch({ type: "product/add/pending" });
     try {
-      const res = await fetch(`http://localhost:5000/carts/add/${id}`, {
+      const res = await fetch(`/carts/add/${id}`, {
         method: "PATCH",
         body: JSON.stringify({ product: product, amount: 1, price: price }),
         headers: {
@@ -151,7 +151,7 @@ export const increaseAmount = (productId, id) => {
     dispatch({ type: "product/increase/pending" });
     try {
       const res = await fetch(
-        `http://localhost:5000/carts/product/increment/${id}`,
+        `/carts/product/increment/${id}`,
         {
           method: "PATCH",
           body: JSON.stringify({ product: productId }),
@@ -175,7 +175,7 @@ export const decreaseAmount = (productId, id) => {
     dispatch({ type: "product/decrease/pending" });
     try {
       const res = await fetch(
-        `http://localhost:5000/carts/product/decrement/${id}`,
+        `/carts/product/decrement/${id}`,
         {
           method: "PATCH",
           body: JSON.stringify({ product: productId }),
@@ -198,7 +198,7 @@ export const deleteCart = (id) => {
   return async (dispatch) => {
     dispatch({ type: "cart/delete/pending" });
     try {
-      const res = await fetch(`http://localhost:5000/carts/delete/${id}`, {
+      const res = await fetch(`/carts/delete/${id}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
