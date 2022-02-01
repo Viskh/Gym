@@ -1,0 +1,169 @@
+.shop {
+  width: 90%;
+  margin: 70px auto;
+  padding: 0 0 50px;
+  border-radius: 70px;
+  background: linear-gradient(110.15deg, #4A4B50 1.86%, #0D0D0F 98.63%);
+}
+
+.shop__container {
+  width: 90%;
+  margin: auto;
+}
+
+.shop__header {
+  width: 100%;
+  height: 130px;
+  padding: 0 30px;
+  font-size: 40px;
+  text-align: center;
+  border-radius: 70px 70px 0 0 ;
+  border-bottom: 2px solid #C4C4C4;
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shop__header__title {
+  color: #fff;
+  font-size: 72px;
+  font-weight: 600;
+  text-transform: lowercase;
+  padding-bottom: 15px;
+}
+
+.shop__header__logo {
+  width: 70px;
+  height: 70px;
+}
+
+.shop__main {
+  margin: 50px 0 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product__cart {
+  width: 250px;
+  height: 330px;
+  margin: 28px ;
+  border-radius: 20px;
+  background-color: #5F5F63;
+}
+
+.product__cart__img {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 20px 0 0;
+  background-color: #fff;
+}
+
+.product__cart__img img {
+  width: 40%;
+}
+
+.product__cart__text {
+  width: 100%;
+  padding: 10px;
+}
+
+.cart__text__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product__cart__text h5 {
+  margin: 7% 0 0;
+  height: 60px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: normal;
+}
+
+.product__cart__text p {
+  font-size: 18px;
+  color: #fff;
+}
+
+.product__cart button {
+  padding: 3px 8px;
+  display: block;
+  text-transform: lowercase;
+  font-size: 18px;
+  background-color: #F3775B;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product__cart button:hover {
+  background-color: #f76949;
+}
+
+/* search ------------------------------------------------------- */
+
+
+.shop___search__form {
+  width: 100px;
+  margin:  auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  margin: 20px;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+}
+
+.search > div:after {
+  content: "";
+  background: #e3e3e3;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 25px;
+  right: -2px;
+  transform: rotate(135deg);
+}
+
+.search > div > input {
+  color: #e3e3e3;
+  font-size: 16px;
+  background: transparent;
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  border: solid 3px white;
+  outline: none;
+  border-radius: 35px;
+  transition: width 0.5s;
+}
+
+.search > div > input::placeholder {
+  color: white;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search > div > input:focus::placeholder {
+  opacity: 1;
+}
+
+.search > div > input:focus,
+.search > div > input:not(:placeholder-shown) {
+  width: 400px;
+}
