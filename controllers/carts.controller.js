@@ -34,6 +34,19 @@ module.exports.cartsController = {
     }
   },
 
+  addTrainerCart: async (req, res) => {
+    try {
+      await Cart.findByIdAndUpdate(req.params.id, {
+        trainer: req.body.trainer,
+      });
+      const cart = await Cart.findById(req.params.id);
+      res.json(cart);
+
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
   addCartItem: async (req, res) => {
     try {
       await Cart.findByIdAndUpdate(req.params.id, {
@@ -53,6 +66,7 @@ module.exports.cartsController = {
       res.json(e);
     }
   },
+
   addCartSubscription: async (req ,res) => {
     const startTime = new Date().getTime() / 1000;
     const subsc = await Subscription.findById(req.body.subscription);
