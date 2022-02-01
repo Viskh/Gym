@@ -17,6 +17,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
+
 const connected = async () => {
   try {
     await mongoose.connect(process.env.MONGO_SERVER);
