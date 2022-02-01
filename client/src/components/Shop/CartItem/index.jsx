@@ -39,7 +39,7 @@ const CartItem = ({ productCart }) => {
               <td>
                 <img
                 className={styles.cart__item__img}
-                  src={`http://localhost:5000/${product.img}`}
+                  src={`/${product.img}`}
                   alt="product"
                 />
               </td>

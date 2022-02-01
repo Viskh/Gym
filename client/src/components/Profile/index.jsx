@@ -87,7 +87,7 @@ const Profile = () => {
             <div className={styles.profile__image__div}>
               <img
                 width={200}
-                src={`http://localhost:5000/${userProfile.img}`}
+                src={`/${userProfile.img}`}
                 alt="avatar"
               />
             </div>
@@ -152,7 +152,7 @@ const Profile = () => {
           {subsId ? (
             <figure className={styless.cart} key={subsId._id}>
               <h2 className={styless.cart__img__title}>{subsId.name}</h2>
-              <img src={`http://localhost:5000/${subsId.img}`} alt="" />
+              <img src={`/${subsId.img}`} alt="" />
               <figcaption>
                 <h3 className={styless.cart__price}>{subsId.price} ₽</h3>
                 <p>Абонемент на: {subsId.time / 3600 / 24} дней</p>
@@ -167,7 +167,7 @@ const Profile = () => {
             <div className={stylesss.cart}>
               <div className={stylesss.block_cart}>
                 <div className={stylesss.image}>
-                  <img src={`http://localhost:5000/${trainerId.img}`} alt="" />
+                  <img src={`/${trainerId.img}`} alt="" />
                 </div>
                 <div className={stylesss.info}>
                   <h3>Имя: {trainerId.name}</h3>

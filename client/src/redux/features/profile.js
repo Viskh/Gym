@@ -121,7 +121,7 @@ export const trainerAddInCart = (trainer, id) => {
   return async (dispatch) => {
     dispatch({type: "profile/trainer/pending"})
     try {
-      const res = await fetch(`http://localhost:5000/carts/add/trainer/${id}`,{
+      const res = await fetch(`/carts/add/trainer/${id}`,{
         method: "PATCH",
         body: JSON.stringify({trainer: trainer}),
         headers: {
@@ -141,7 +141,7 @@ export const subscriptionAddInCart = (subscription, id) => {
   return async (dispatch) => {
     dispatch({type: "profile/subscription/pending"})
     try {
-      const res = await fetch(`http://localhost:5000/carts/add/subscription/in/${id}`,{
+      const res = await fetch(`/carts/add/subscription/in/${id}`,{
         method: "PATCH",
         body: JSON.stringify({subscription: subscription}),
         headers: {
@@ -161,7 +161,7 @@ export const loadUsers = () => {
     try {
       dispatch({type: 'profile/load/pending'});
 
-      const res = await fetch(`http://localhost:5000/users`)
+      const res = await fetch(`/users`)
       const users = await res.json()
       dispatch({type: 'profile/load/fulfilled', payload: users})
     }catch (e){
@@ -174,7 +174,7 @@ export const loadUserSubscription = (id) => {
   return async (dispatch) => {
     try {
       dispatch({type: 'profile/subscription/pending'});
-      const res = await fetch(`http://localhost:5000/carts/${id}`);
+      const res = await fetch(`/carts/${id}`);
       const subscription = await res.json();
       dispatch({type: 'profile/loadSubscription/fulfilled', payload: subscription})
     }catch (e) {
@@ -187,7 +187,7 @@ export const loadUserTrainer = (id) => {
   return async (dispatch) => {
     try {
       dispatch({type: 'profile/trainer/pending'});
-      const res = await fetch(`http://localhost:5000/carts/${id}`);
+      const res = await fetch(`/carts/${id}`);
       const trainer = await res.json();
       dispatch({type: 'profile/trainer/fulfilled', payload: trainer})
     }catch (e) {
@@ -204,7 +204,7 @@ export const uploadAvatar = (file, id) => {
     try {
       const formData = new FormData();
       formData.append("img", file);
-      const res = await fetch(`http://localhost:5000/users/${id}`, {
+      const res = await fetch(`/users/${id}`, {
         method: "PATCH",
         body: formData,
         headers: {
@@ -236,7 +236,7 @@ export const updateUserProfile = (
     favoriteQuote
   };
   return (dispatch) => {
-    fetch(`http://localhost:5000/profile/update/${id}`, {
+    fetch(`/profile/update/${id}`, {
       method: "PATCH",
       headers: {
         'Content-type': 'application/json',

@@ -73,7 +73,7 @@ const Shop = () => {
                   <div className={styles.product__cart} key={product._id}>
                     <div className={styles.product__cart__img}>
                       <img
-                        src={`http://localhost:5000/${product.img}`}
+                        src={`/${product.img}`}
                         alt="product"
                       />
                     </div>

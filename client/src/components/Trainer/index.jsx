@@ -50,7 +50,7 @@ function Trainer() {
                   <div className={styles.block_cart}>
                     <div className={styles.image}>
                       <img
-                        src={`http://localhost:5000/${trainer.img}`}
+                        src={`/${trainer.img}`}
                         alt=""/>
                     </div>
                     <div className={styles.info}>

@@ -72,7 +72,7 @@ export const loadSubscriptions = () => {
   return async (dispatch) => {
     dispatch({ type: "subscriptions/load/pending" });
     try {
-      const res = await fetch("http://localhost:5000/users/subscriptions");
+      const res = await fetch("/users/subscriptions");
       const data = await res.json();
 
       dispatch({ type: "subscriptions/load/fullfilled", payload: data });
@@ -98,7 +98,7 @@ export const addAbonements = (name, img, price, time, text) => {
       };
 
       const res = await fetch(
-        "http://localhost:5000/admin/subscriptions",
+        "/admin/subscriptions",
         options
       );
       const subscriptions = await res.json();
@@ -107,7 +107,7 @@ export const addAbonements = (name, img, price, time, text) => {
       formData.append("img", img);
 
       const resImage = await fetch(
-        `http://localhost:5000/admin/subscriptions/image/${subscriptions._id}`,
+        `/admin/subscriptions/image/${subscriptions._id}`,
         {
           method: "PATCH",
           body: formData,
@@ -127,7 +127,7 @@ export const deleteSubscriptions = (id) => {
     dispatch({ type: "subscriptions/delete/pending" });
 
     try {
-      await fetch(`http://localhost:5000/admin/subscriptions/${id}`, {
+      await fetch(`/admin/subscriptions/${id}`, {
         method: "DELETE",
       });
       dispatch({ type: "subscriptions/delete/fulfilled", payload: id });

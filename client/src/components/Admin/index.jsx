@@ -110,7 +110,7 @@ const Admin = () => {
                         <p>имя: {item.name}</p>
                         <img
                           className={styles.admin__img}
-                          src={`http://localhost:5000/${item.img}`}
+                          src={`/${item.img}`}
                           alt=""
                         />
                         <p>цена: {item.price}</p>
@@ -156,7 +156,7 @@ const Admin = () => {
                         <p>рейтинг: {item.rating}</p>
                         <img
                           className={styles.admin__img}
-                          src={`http://localhost:5000/${item.img}`}
+                          src={`/${item.img}`}
                           alt=""
                         />
                         <p>описание: {item.description}</p>
@@ -196,7 +196,7 @@ const Admin = () => {
                         <p>имя: {user.name}</p>
                         <img
                           className={styles.admin__img}
-                          src={`http://localhost:5000/${user.img}`}
+                          src={`/${user.img}`}
                           alt=""
                         />
                         <p>Вес: {user.weight}</p>
@@ -237,7 +237,7 @@ const Admin = () => {
                         <p>имя: {item.name}</p>
                         <img
                           className={styles.admin__img}
-                          src={`http://localhost:5000/${item.img}`}
+                          src={`/${item.img}`}
                           alt=""
                         />
                         <p>Упаковка: {item.weight}</p>

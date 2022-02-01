@@ -64,7 +64,7 @@ export const createUser = (email, password, name, weight) => {
   return async (dispatch) => {
     dispatch({ type: "application/signup/pending" });
 
-    const responseRegister = await fetch("http://localhost:5000/users/register", {
+    const responseRegister = await fetch("/users/register", {
       method: "POST",
       body: JSON.stringify({ email, password, name, weight }),
       headers: {
@@ -74,7 +74,7 @@ export const createUser = (email, password, name, weight) => {
 
     const jsonRegister = await responseRegister.json();
 
-    const responseCart = await fetch(`http://localhost:5000/carts`, {
+    const responseCart = await fetch(`/carts`, {
       method: "POST",
       body: JSON.stringify({ user: jsonRegister._id }),
       headers: {
@@ -98,7 +98,7 @@ export const login = (email, password) => {
   return async (dispatch) => {
     dispatch({ type: "application/signin/pending" });
 
-    const response = await fetch("http://localhost:5000/users/login", {
+    const response = await fetch("/users/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
