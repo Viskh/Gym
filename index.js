@@ -9,7 +9,7 @@ const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
-app.use("/static", express.static(path.resolve(__dirname, "client", "static")));
+app.use(express.static(path.resolve(__dirname, "client", "static")));
 app.use(require("./routes"));
 
 app.get("*", (req, res) => {
