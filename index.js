@@ -21,7 +21,6 @@ const connected = async () => {
   try {
     await mongoose.connect(process.env.MONGO_SERVER);
     console.log("Вы успешно подключились к MongoDB!");
-
     app.listen(port, () => {
       console.log("Server has been started!");
     });
