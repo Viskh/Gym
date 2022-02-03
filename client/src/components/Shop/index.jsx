@@ -39,7 +39,11 @@ const Shop = () => {
         <div className={styles.shop__header}>
           <div>
             <NavLink to={"/"}>
-              <img  className={styles.shop__header__logo} src={logo} alt="logo" />
+              <img
+                className={styles.shop__header__logo}
+                src={logo}
+                alt="logo"
+              />
             </NavLink>
           </div>
 
@@ -72,10 +76,7 @@ const Shop = () => {
                 return (
                   <div className={styles.product__cart} key={product._id}>
                     <div className={styles.product__cart__img}>
-                      <img
-                        src={`/${product.img}`}
-                        alt="product"
-                      />
+                      <img src={`/${product.img}`} alt="product" />
                     </div>
                     <div className={styles.product__cart__text}>
                       <div className={styles.cart__text__top}>
@@ -83,20 +84,28 @@ const Shop = () => {
                         <p>{product.weight} гр</p>
                       </div>
                       <h5>{product.name}</h5>
-                    
 
-                    {!token ? (
-                      <NavLink to={"/signin"}>
-                        <button>Купить</button>
-                      </NavLink>
-                    ) : (
-                      <button
-                        disabled={isCartItem}
-                        onClick={() => handleBuyProduct(product._id, product.price)}
-                      >
-                        {isCartItem ? "В корзине" : "добавить в корзину"}
-                      </button>
-                    )}
+                      {!token ? (
+                        <NavLink to={"/signin"}>
+                          <button>Купить</button>
+                        </NavLink>
+                      ) : isCartItem ? (
+                        <button
+                          disabled={true}
+                          className={styles.cart__text__btn__disabled}
+                        >
+                          в корзине
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() =>
+                            handleBuyProduct(product._id, product.price)
+                          }
+                          className={styles.cart__text__btn}
+                        >
+                          добавить в корзину
+                        </button>
+                      )}
                     </div>
                   </div>
                 );
