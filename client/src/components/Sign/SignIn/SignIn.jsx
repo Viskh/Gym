@@ -116,7 +116,7 @@ export default function SignIn() {
             disabled={!formValid}
             className={styles.button5}
           >
-            Login
+            Вход
           </button></Link> 
         </form>
         {/* <span>У вас нет акаунта?</span> */}

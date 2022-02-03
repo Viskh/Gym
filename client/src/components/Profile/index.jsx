@@ -13,22 +13,18 @@ import { NavLink, useParams } from "react-router-dom";
 import { loadSubscriptions } from "../../redux/features/subscription";
 import { loadTrainers } from "../../redux/features/trainer";
 import Timer from "./Timer";
-import { loadAllCarts } from "../../redux/features/cart";
+import { loadAllCarts, loadCartItems } from "../../redux/features/cart";
 
 const Profile = () => {
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(loadUsers());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(loadUserSubscription(id));
-  // eslint-disable-next-line no-use-before-define
-  }, [dispatch, id]);
-
-  useEffect(() => {
-    dispatch(loadUserTrainer(id));
+    dispatch(loadCartItems(id));
   // eslint-disable-next-line no-use-before-define
   }, [dispatch, id]);
 
@@ -46,24 +42,25 @@ const Profile = () => {
 
   const users = useSelector((state) => state.profileReducer.users);
 
-  const { id } = useParams();
-
   const userProfile = users.find((user) => user._id === id);
 
   const subscriptions = useSelector(
     (state) => state.subscriptionsReducer.subscriptions
   );
-  const subscription = useSelector(
-    (state) => state.profileReducer.subscription
+
+  const cartItems = useSelector(
+    (state) => state.cartReducer.cartItems
   );
+  console.log();
+
   const subsId = subscriptions.find(
-    (item) => item._id === subscription.subscription
+    (item) => item._id === cartItems.subscription
   );
 
   const trainers = useSelector((state) => state.trainerReducer.trainers);
 
   const trainer = useSelector(
-    (state) => state.profileReducer.subscription.trainer
+    (state) => state.cartReducer.cartItems.trainer
   );
 
   const trainerId = trainers.find((item) => item._id === trainer);
@@ -160,7 +157,7 @@ const Profile = () => {
                 <p>Абонемент на: {subsId.time / 3600 / 24} дней</p>
                 <p>{subsId.text}</p>
                 <div className={styles.timer}>
-                  <Timer timestampMs={subscription.subscriptionDeadTime} />
+                  <Timer timestampMs={cartItems.subscriptionDeadTime} />
                 </div>
               </figcaption>
             </figure>
