@@ -1,3 +1,3 @@
 # TheGym
 
-![gif](https://github.com/Viskh/Gym/tree/main/static/gif/home.gif)
+![gif](https://github.com/Viskh/Gym/blob/main/static/gif/home.gif)
