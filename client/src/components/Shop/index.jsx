@@ -87,7 +87,9 @@ const Shop = () => {
 
                       {!token ? (
                         <NavLink to={"/signin"}>
-                          <button>Купить</button>
+                          <button className={styles.cart__text__btn}>
+                            Купить
+                          </button>
                         </NavLink>
                       ) : isCartItem ? (
                         <button
