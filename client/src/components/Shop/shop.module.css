@@ -93,20 +93,34 @@
   color: #fff;
 }
 
-.product__cart button {
-  padding: 3px 8px;
+.cart__text__btn {
+  padding: 5px 10px;
   display: block;
   text-transform: lowercase;
   font-size: 18px;
-  background-color: #F3775B;
+  background-color: #f76949;
   border: none;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
-.product__cart button:hover {
+.cart__text__btn:hover {
+  background-color: #fff;
+  color: #f76949;
+}
+
+.cart__text__btn__disabled {
+  padding: 5px 10px;
+  display: block;
+  text-transform: lowercase;
+  font-size: 18px;
   background-color: #f76949;
+  border: none;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 /* search ------------------------------------------------------- */
@@ -131,7 +145,7 @@
 
 .search > div:after {
   content: "";
-  background: #e3e3e3;
+  background: white;
   width: 4px;
   height: 20px;
   position: absolute;

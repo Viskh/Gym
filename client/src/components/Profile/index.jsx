@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./profile.module.css";
 import styless from "../Subscriptions/subscription.module.css";
-import stylesss from "../Trainer/trainer.module.css";
+import stylesss from "../Trainers/trainer.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadUsers,
@@ -24,11 +24,13 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(loadUserSubscription(id));
-  }, [dispatch]);
+  // eslint-disable-next-line no-use-before-define
+  }, [dispatch, id]);
 
   useEffect(() => {
     dispatch(loadUserTrainer(id));
-  }, [dispatch]);
+  // eslint-disable-next-line no-use-before-define
+  }, [dispatch, id]);
 
   useEffect(() => {
     dispatch(loadSubscriptions());

@@ -69,6 +69,40 @@ export const cartReducer = (state = initialState, action) => {
         ...state,
         cartItems: action.payload,
       };
+
+      case 'subscription/addInCart/pending':
+        return {
+          ...state,
+          loading: true
+        }
+      case 'subscription/addInCart/fulfilled':
+        return {
+          ...state,
+          cartItems: action.payload,
+          loading: false
+        }
+      case 'subscription/addInCart/rejected':
+        return {
+          ...state,
+          error: action.payload
+        }
+        
+    case 'trainer/addInCart/pending':
+      return {
+        ...state,
+        loading: true
+      }
+    case 'trainer/addInCart/fulfilled':
+      return {
+        ...state,
+        cartItems: action.payload,
+        loading: false
+      }
+    case 'trainer/addInCart/rejected':
+      return {
+        ...state,
+        error: action.payload
+      }
     default:
       return state;
   }
@@ -103,6 +137,45 @@ export const loadCartItems = (id) => {
     }
   };
 };
+
+export const subscriptionAddInCart = (subscription, id) => {
+  return async (dispatch) => {
+    dispatch({type: "subscription/addInCart/pending"})
+    try {
+      const res = await fetch(`/carts/add/subscription/in/${id}`,{
+        method: "PATCH",
+        body: JSON.stringify({subscription: subscription}),
+        headers: {
+          "Content-type": "application/json"
+        }
+      });
+      const data = await res.json();
+      dispatch({type: "subscription/addInCart/fulfilled", payload: data})
+    }catch (e) {
+      dispatch({type: "subscription/addInCart/rejected", payload: e})
+    }
+  }
+}
+
+export const trainerAddInCart = (trainer, id) => {
+  return async (dispatch) => {
+    dispatch({type: "trainer/addInCart/pending"})
+    try {
+      const res = await fetch(`/carts/add/trainer/${id}`,{
+        method: "PATCH",
+        body: JSON.stringify({trainer: trainer}),
+        headers: {
+          "Content-type": "application/json",
+        }
+      });
+      const data = await res.json();
+      dispatch({type: "trainer/addInCart/fulfilled", payload: data})
+
+    }catch (e) {
+      dispatch({type: "trainer/addInCart/rejected", payload: e})
+    }
+  }
+}
 
 export const removeCartItem = (product, id) => {
   return async (dispatch) => {
