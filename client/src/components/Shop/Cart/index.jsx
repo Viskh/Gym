@@ -83,7 +83,7 @@ const Cart = () => {
                       ? cartItems.productsCart.reduce((a, b) => {
                           return a.price * a.amount + b.price * b.amount;
                         })
-                      : cartItems.productsCart[0].price * cartItems.productsCart[0].amount}
+                      : cartItems.productsCart[0].price * cartItems.productsCart[0].amount} ₽
                   </td>
                 </tr>
               </tbody>
