@@ -98,35 +98,6 @@ export const loadUsers = () => {
   };
 };
 
-export const loadUserSubscription = (id) => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: "profile/subscription/pending" });
-      const res = await fetch(`/carts/${id}`);
-      const subscription = await res.json();
-      dispatch({
-        type: "profile/loadSubscription/fulfilled",
-        payload: subscription,
-      });
-    } catch (e) {
-      dispatch({ type: "profile/subscription/rejected", payload: e });
-    }
-  };
-};
-
-export const loadUserTrainer = (id) => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: "profile/trainer/pending" });
-      const res = await fetch(`/carts/${id}`);
-      const trainer = await res.json();
-      dispatch({ type: "profile/trainer/fulfilled", payload: trainer });
-    } catch (e) {
-      dispatch({ type: "profile/trainer/rejected", payload: e });
-    }
-  };
-};
-
 export const uploadAvatar = (file, id) => {
   return async (dispatch, getState) => {
     const state = getState();
