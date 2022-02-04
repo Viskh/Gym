@@ -101,7 +101,7 @@ const Header = () => {
               <div className={styles.contacts__left__block}>
                 <div className={styles.left__block__item}>
                   <h6>Адрес</h6>
-                  <p>г. Грозный, ул. Трошева 7</p>
+                  <p>г. Грозный, ул. Лорсанова 9</p>
                 </div>
                 <div className={styles.left__block__item}>
                   <h6>Номер</h6>

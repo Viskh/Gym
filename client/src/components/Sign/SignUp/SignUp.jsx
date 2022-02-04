@@ -14,8 +14,12 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [emailDirty, setEmailDirty] = useState(false);
   const [passwordDirty, setPasswordDirty] = useState(false);
-  const [emailError, setEmailError] = useState("поле ввода не может быть пустым");
-  const [passwordError, setPasswordError] = useState("поле ввода не может быть пустым");
+  const [emailError, setEmailError] = useState(
+    "поле ввода не может быть пустым"
+  );
+  const [passwordError, setPasswordError] = useState(
+    "поле ввода не может быть пустым"
+  );
   const [formValid, setFormVAlid] = useState(false);
 
   const [name, setName] = useState("");
@@ -24,7 +28,9 @@ export default function SignUp() {
 
   const [weight, setWeight] = useState("");
   const [weightDirty, setWeightDirty] = useState(false);
-  const [weightError, setWeightError] = useState("поле ввода не может быть пустым");
+  const [weightError, setWeightError] = useState(
+    "поле ввода не может быть пустым"
+  );
 
   const [tel, setTel] = useState("");
   const [telDirty, setTelDirty] = useState(false);
@@ -113,7 +119,6 @@ export default function SignUp() {
       setFormVAlid(true);
     }
   }, [emailError, passwordError]);
-
 
   const handleSubmit = () => {
     dispatch(createUser(email, password, name, weight));
@@ -224,7 +229,6 @@ export default function SignUp() {
             />
           </div>
 
-
           {ageDirty && ageError && (
             <div style={{ color: "red" }}>{ageError}</div>
           )}
@@ -253,8 +257,6 @@ export default function SignUp() {
             />
           </div>
 
-
-          
           {telDirty && telError && (
             <div style={{ color: "red" }}>{telError}</div>
           )}
@@ -284,6 +286,11 @@ export default function SignUp() {
         <div className={styles.main}>
           <Link to="/" className={styles.a}>
             Главное меню
+          </Link>
+        </div>
+        <div className={styles.main}>
+          <Link to="/signin" className={styles.a}>
+            Вход
           </Link>
         </div>
       </div>
