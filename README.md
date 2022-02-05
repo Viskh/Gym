@@ -8,7 +8,7 @@
   <img src="static/gif/home.gif" alt="home" />
 </p>
 
-#
+##
 
 ##  Функционал пользователя приложения:
 
@@ -28,6 +28,8 @@
 <p align="center">
   <img src="static/gif/user2.gif" alt="user" />
 </p>
+
+##
 
 ##  Функционал админа приложения:
 
