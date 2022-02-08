@@ -81,10 +81,10 @@ const Cart = () => {
                   <td>
                     {cartItems.productsCart.length > 1
                       ? cartItems.productsCart.reduce((a, b) => {
-                          return a.price * a.amount + b.price * b.amount;
-                        })
+                          return a + (b.price * b.amount)
+                        }, 0)
                       : cartItems.productsCart[0].price *
-                        cartItems.productsCart[0].amount}{" "}
+                        cartItems.productsCart[0].amount} 
                     ₽
                   </td>
                 </tr>
