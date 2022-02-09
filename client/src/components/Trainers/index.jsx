@@ -41,7 +41,7 @@ function Trainers() {
           </div>
         </div>
         <div className={styles.headerTitle}>
-          <h2>Тренеры THE GYM которые будут вас обучать</h2>
+          <h2>Тренеры THE GYM</h2>
         </div>
         <div className={styles.container_block}>
           {trainers.map((trainer) => {
