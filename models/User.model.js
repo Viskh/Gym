@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema(
       type: String,
       default: "user",
     },
-    phone: {
+    tel: {
       type: Number,
     },
     age: {
@@ -35,7 +35,6 @@ const userSchema = mongoose.Schema(
     },
     purposeTrain: {
       type: String,
-      default: "Держать себя в форме!"
     },
   },
   { timestamps: true }

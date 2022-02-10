@@ -11,18 +11,30 @@ module.exports.usersController = {
       res.json(error);
     }
   },
-  getUserById: async (req,res) => {
+
+  getUserById: async (req, res) => {
     try {
-      const {id} = req.params
-      const user = await User.findById(id)
-      res.json(user)
-    }catch (e) {
-      res.json(e)
+      const { id } = req.params;
+      const user = await User.findById(id);
+      res.json(user);
+    } catch (e) {
+      res.json(e);
     }
   },
+
   registerUser: async (req, res) => {
     try {
-      const { email, password, name, weight, img, role, phone, age, purposeTrain } = req.body;
+      const {
+        email,
+        password,
+        name,
+        weight,
+        img,
+        role,
+        tel,
+        age,
+        purposeTrain,
+      } = req.body;
 
       const hash = await bcrypt.hash(
         password,
@@ -36,9 +48,9 @@ module.exports.usersController = {
         weight: weight,
         img: img,
         role: role,
-        phone: phone,
+        tel: tel,
         age: age,
-        purposeTrain: purposeTrain
+        purposeTrain: purposeTrain,
       });
 
       res.json(user);
@@ -72,7 +84,7 @@ module.exports.usersController = {
 
       res.json({
         token: token,
-        id: condidate._id
+        id: condidate._id,
       });
     } catch (error) {
       res.json(error.status(401).json(error.toString()));
@@ -91,15 +103,16 @@ module.exports.usersController = {
       res.json(error);
     }
   },
+
   updateUserInfo: async (req, res) => {
     try {
       await User.findByIdAndUpdate(req.user.id, {
-        $set: {...req.body},
+        $set: { ...req.body },
       });
       const user = await User.findByid(req.user.id);
-      res.status(200).json(user)
-    }catch (e) {
-      res.json(e)
+      res.status(200).json(user);
+    } catch (e) {
+      res.json(e);
     }
-  }
+  },
 };
