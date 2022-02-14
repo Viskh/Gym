@@ -63,7 +63,6 @@ export default function auth(state = initialState, action) {
 export const createUser = (email, password, name, weight, tel) => {
   return async (dispatch) => {
     dispatch({ type: "application/signup/pending" });
-
     const responseRegister = await fetch("/users/register", {
       method: "POST",
       body: JSON.stringify({ email, password, name, weight, tel }),
