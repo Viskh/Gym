@@ -124,7 +124,6 @@ export default function SignUp() {
     dispatch(createUser(email, password, name, weight, tel));
     navigate("/signin");
   };
-  console.log(tel);
 
   const blurHandler = (e) => {
     switch (e.target.name) {
