@@ -19,7 +19,7 @@ export default function auth(state = initialState, action) {
       return {
         ...state,
         signingUp: false,
-        user: action.payload
+        user: action.payload,
       };
 
     case "application/signup/rejected":
@@ -48,7 +48,7 @@ export default function auth(state = initialState, action) {
       return {
         ...state,
         signingIn: false,
-        error: action.error,
+        error: action.payload,
       };
     case "application/logOut/fulfilled":
       return {
@@ -81,11 +81,13 @@ export const createUser = (email, password, name, weight, tel) => {
       },
     });
 
-    const jsonCart = await responseCart.json()
-
+    const jsonCart = await responseCart.json();
 
     if (jsonRegister.error) {
-      dispatch({ type: "application/signup/rejected", error: jsonRegister.error });
+      dispatch({
+        type: "application/signup/rejected",
+        error: jsonRegister.error,
+      });
     } else {
       dispatch({ type: "application/signup/fulfilled", payload: jsonRegister });
       dispatch({ type: "cart/create/fulfilled", payload: jsonCart });
@@ -96,23 +98,22 @@ export const createUser = (email, password, name, weight, tel) => {
 export const login = (email, password) => {
   return async (dispatch) => {
     dispatch({ type: "application/signin/pending" });
+    try {
+      const response = await fetch("/users/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
 
-    const response = await fetch("/users/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+      const json = await response.json();
 
-    const json = await response.json();
-
-    if (json.error) {
-      dispatch({ type: "application/signin/rejected", error: json.error });
-    } else {
       dispatch({ type: "application/signin/fulfilled", payload: { json } });
       localStorage.setItem("token", json.token);
       localStorage.setItem("id", json.id);
+    } catch (error) {
+      dispatch({ type: "application/signin/rejected", payload: error });
     }
   };
 };
