@@ -40,9 +40,9 @@ export default function SignUp() {
   const [ageDirty, setAgeDirty] = useState(false);
   const [ageError, setAgeError] = useState("поле ввода не может быть пустым");
 
-  const [text, setText] = useState("");
-  const [textDirty, setTextDirty] = useState(false);
-  const [textError, setTextError] = useState("поле ввода не может быть пустым");
+  const [purpose, setPurpose] = useState("");
+  const [purposeDirty, setPurposeDirty] = useState(false);
+  const [purposeError, setPurposeError] = useState("поле ввода не может быть пустым");
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -67,12 +67,12 @@ export default function SignUp() {
     }
   };
 
-  const textHandler = (e) => {
-    setText(e.target.value);
+  const purposeHandler = (e) => {
+    setPurpose(e.target.value);
     if (!e.target.value) {
-      setTextError("поле ввода не может быть пустым");
+      setPurposeError("поле ввода не может быть пустым");
     } else {
-      setTextError("");
+      setPurposeError("");
     }
   };
 
@@ -121,7 +121,7 @@ export default function SignUp() {
   }, [emailError, passwordError]);
 
   const handleSubmit = () => {
-    dispatch(createUser(email, password, name, weight, tel));
+    dispatch(createUser(email, password, name, weight, tel, purpose, age));
     navigate("/signin");
   };
 
@@ -160,7 +160,7 @@ export default function SignUp() {
         setAgeDirty(true);
         break;
       case "text":
-        setTextDirty(true);
+        setPurposeDirty(true);
         break;
       default:
         break;
@@ -243,8 +243,8 @@ export default function SignUp() {
             />
           </div>
 
-          {textDirty && textError && (
-            <div style={{ color: "red" }}>{textError}</div>
+          {purposeDirty && purposeError && (
+            <div style={{ color: "red" }}>{purposeError}</div>
           )}
           <div className={styles.user__box}>
             <input
@@ -252,8 +252,8 @@ export default function SignUp() {
               name="text"
               type="text"
               placeholder="purpose of training"
-              value={text}
-              onChange={(e) => textHandler(e)}
+              value={purpose}
+              onChange={(e) => purposeHandler(e)}
             />
           </div>
 
