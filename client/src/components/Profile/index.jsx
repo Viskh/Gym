@@ -3,12 +3,7 @@ import styles from "./profile.module.css";
 import styless from "../Subscriptions/subscription.module.css";
 import stylesss from "../Trainers/trainer.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  loadUsers,
-  loadUserSubscription,
-  loadUserTrainer,
-  uploadAvatar,
-} from "../../redux/features/profile";
+import { loadUsers, uploadAvatar } from "../../redux/features/profile";
 import { NavLink, useParams } from "react-router-dom";
 import { loadSubscriptions } from "../../redux/features/subscription";
 import { loadTrainers } from "../../redux/features/trainer";
@@ -25,7 +20,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(loadCartItems(id));
-  // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line no-use-before-define
   }, [dispatch, id]);
 
   useEffect(() => {
@@ -48,9 +43,7 @@ const Profile = () => {
     (state) => state.subscriptionsReducer.subscriptions
   );
 
-  const cartItems = useSelector(
-    (state) => state.cartReducer.cartItems
-  );
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
   console.log();
 
   const subsId = subscriptions.find(
@@ -59,9 +52,7 @@ const Profile = () => {
 
   const trainers = useSelector((state) => state.trainerReducer.trainers);
 
-  const trainer = useSelector(
-    (state) => state.cartReducer.cartItems.trainer
-  );
+  const trainer = useSelector((state) => state.cartReducer.cartItems.trainer);
 
   const trainerId = trainers.find((item) => item._id === trainer);
 
@@ -77,18 +68,16 @@ const Profile = () => {
       <div className={styles.header}>
         <div className={styles.header__name}>Мой профиль</div>
         <hr />
-        <button className={styles.button_79}><NavLink to={"/"}>На главную</NavLink></button>
+        <button className={styles.button_79}>
+          <NavLink to={"/"}>На главную</NavLink>
+        </button>
       </div>
 
       <div className={styles.profile__info__row}>
         <div className={styles.profile__info__user}>
           {userProfile.img ? (
             <div className={styles.profile__image__div}>
-              <img
-                width={200}
-                src={`/${userProfile.img}`}
-                alt="avatar"
-              />
+              <img width={200} src={`/${userProfile.img}`} alt="avatar" />
             </div>
           ) : (
             <img
@@ -131,7 +120,7 @@ const Profile = () => {
               Почта: {userProfile.email}
             </div>
             <div className={styles.profile__userData}>
-              Телефон: {userProfile.phone}
+              Телефон: {userProfile.tel}
             </div>
           </div>
         </div>
@@ -140,7 +129,6 @@ const Profile = () => {
           <div>
             <h2>Цель тренировок:</h2>
             <p className={styles.profile__userData}>
-
               {userProfile.purposeTrain}
             </p>
           </div>
