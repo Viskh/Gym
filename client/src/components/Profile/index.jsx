@@ -9,6 +9,7 @@ import { loadSubscriptions } from "../../redux/features/subscription";
 import { loadTrainers } from "../../redux/features/trainer";
 import Timer from "./Timer";
 import { loadAllCarts, loadCartItems } from "../../redux/features/cart";
+import avatarUpdate from '../../assets/avatar.svg'
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -98,7 +99,7 @@ const Profile = () => {
               <span className={styles.input__file_icon_wrapper}>
                 <img
                   className="input__file-icon"
-                  src="https://cdn-icons.flaticon.com/png/512/3033/premium/3033215.png?token=exp=1643371491~hmac=1ce0292b8023e8c9662817602d91ed35 "
+                  src={avatarUpdate}
                   alt="Выбрать файл"
                   width="40"
                 />
