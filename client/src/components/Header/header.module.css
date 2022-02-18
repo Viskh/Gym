@@ -145,6 +145,7 @@
   font-size: 14px;
   margin-top: 20px;
   color: #c2c2c2;
+  cursor: pointer;
 }
 
 .left__block__item div {
@@ -180,4 +181,9 @@ align-items: center;
   height: 50px;
   filter: invert(90%); 
   -webkit-filter:invert(90%); 
+}
+
+.contacts__right__block img:hover {
+  filter: invert(60%); 
+  -webkit-filter:invert(60%); 
 }
