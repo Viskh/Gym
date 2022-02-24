@@ -6,7 +6,6 @@ import logo1 from "../../assets/logog.png";
 import styles from "./trainer.module.css";
 import { loadCartItems, trainerAddInCart } from "../../redux/features/cart";
 
-
 function Trainers() {
   const trainers = useSelector((state) => state.trainerReducer.trainers);
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
@@ -45,34 +44,34 @@ function Trainers() {
         </div>
         <div className={styles.container_block}>
           {trainers.map((trainer) => {
-                return (
-                  <div className={styles.cart} key={trainer._id}>
-                    <div className={styles.block_cart}>
-                      <div className={styles.image}>
-                        <img src={`/${trainer.img}`} alt="" />
-                      </div>
-                      <div className={styles.info}>
-                        <h3>Имя: {trainer.name}</h3>
-                        <p>{trainer.description}</p>
-                        <p className={styles.star}>★ {trainer.rating}</p>
-                      </div>
-                      {cartItems.trainer !== trainer._id ? (
-                        <div className={styles.button}>
-                          <button
-                            onClick={() =>
-                              token
-                                ? handleClickTrainers(trainer._id)
-                                : navigate("/signin")
-                            }
-                          >
-                            Выбрать тренера
-                          </button>
-                        </div>
-                      ) : null}
-                    </div>
+            return (
+              <div className={styles.cart} key={trainer._id}>
+                <div className={styles.block_cart}>
+                  <div className={styles.image}>
+                    <img src={`/${trainer.img}`} alt="" />
                   </div>
-                );
-              })}
+                  <div className={styles.info}>
+                    <h3>Имя: {trainer.name}</h3>
+                    <p>{trainer.description}</p>
+                    <p className={styles.star}>★ {trainer.rating}</p>
+                  </div>
+                  {cartItems.trainer !== trainer._id ? (
+                    <div className={styles.button}>
+                      <button
+                        onClick={() =>
+                          token
+                            ? handleClickTrainers(trainer._id)
+                            : navigate("/signin")
+                        }
+                      >
+                        Выбрать тренера
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
