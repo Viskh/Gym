@@ -38,7 +38,7 @@ const CartItem = ({ productCart }) => {
             <tr className={styles.cart__tr} key={product._id}>
               <td>
                 <img
-                className={styles.cart__item__img}
+                  className={styles.cart__item__img}
                   src={`/${product.img}`}
                   alt="product"
                 />
@@ -58,9 +58,7 @@ const CartItem = ({ productCart }) => {
                   </button>
                 </div>
               </td>
-              <td>
-                {productCart.price * productCart.amount} ₽
-              </td>
+              <td>{productCart.price * productCart.amount} ₽</td>
               <td>
                 <button
                   className={styles.cart__item__delete}
@@ -70,7 +68,6 @@ const CartItem = ({ productCart }) => {
                 </button>
               </td>
             </tr>
-            
           );
         }
         return null;
